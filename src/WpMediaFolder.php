@@ -41,16 +41,18 @@ class WpMediaFolder extends Connector {
      */
     public function action_links($links, $record)
     {
-        if ($record->object_id) {
-            $editLink = get_edit_post_link((int) $record->object_id);
-            if ($editLink) {
-                $links[__('Edit Media', 'stream-connector-media-replace')] = $editLink;
-            }
+        if (! $record->object_id) {
+            return $links;
+        }
 
-            $permalink = get_permalink((int) $record->object_id);
-            if ($permalink) {
-                $links[__('View', 'stream-connector-media-replace')] = $permalink;
-            }
+        $editLink = get_edit_post_link((int) $record->object_id);
+        if ($editLink) {
+            $links[esc_html__('Edit Media', 'stream-connector-media-replace')] = esc_url($editLink);
+        }
+
+        $permalink = get_permalink((int) $record->object_id);
+        if ($permalink) {
+            $links[esc_html__('View', 'stream-connector-media-replace')] = esc_url($permalink);
         }
 
         return $links;
