@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Itineris\StreamConnectorMediaReplace;
 
+use function defined;
+
 // If this file is called directly, abort.
 if (! defined('WPINC')) {
     die;

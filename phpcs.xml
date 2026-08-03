@@ -14,13 +14,18 @@
   <arg name="extensions" value="php" />
 
   <!-- Use Itineris WP Coding Standards -->
-  <rule ref="Itineris" />
+  <rule ref="Itineris">
+    <exclude name="PSR1.Methods.CamelCapsMethodName.NotCamelCaps" />
+    <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint" />
+    <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint" />
+  </rule>
 
   <config name="minimum_supported_wp_version" value="6.2" />
 
   <rule ref="WordPress.WP.I18n">
     <properties>
-      <property name="text_domain" type="array" value="itineris" />
+      <property name="text_domain" type="array" value="itineris,stream-connector-media-replace" />
     </properties>
   </rule>
+
 </ruleset>

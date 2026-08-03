@@ -5,11 +5,23 @@ declare(strict_types=1);
 namespace Itineris\StreamConnectorMediaReplace;
 
 use WP_Stream\Connector;
-use WP_Stream\Record;
 
-class WpMediaFolder extends Connector {
+use function sprintf;
+
+class WpMediaFolder extends Connector
+{
+    /**
+     * Connector slug
+     *
+     * @var string
+     */
     public $name = 'wp-media-folder';
 
+    /**
+     * Actions registered for this connector
+     *
+     * @var array
+     */
     public $actions = [
         'wpmf_after_replace',
     ];
@@ -34,12 +46,16 @@ class WpMediaFolder extends Connector {
     }
 
     /**
-     * @param array  $links
-     * @param Record $record
+     * Add action links to Stream drop row in admin list screen
      *
-     * @return array
+     * @param array             $links  Previous links registered.
+     * @param \WP_Stream\Record $record Stream record.
+     *
+     * @filter wp_stream_action_links_{connector}
+     *
+     * @return array Action links
      */
-    public function action_links($links, $record)
+    public function action_links($links, $record): array
     {
         if (! $record->object_id) {
             return $links;
@@ -64,6 +80,7 @@ class WpMediaFolder extends Connector {
         $url = (string) wp_get_attachment_url($attachmentId);
 
         $message = sprintf(
+            /* translators: %s is the media item name */
             __('"%s" file replaced', 'stream-connector-media-replace'),
             $title,
         );
