@@ -2,7 +2,7 @@
   "name": "itinerisltd/stream-connector-media-replace",
   "description": "Media file replacement connector for Stream (Enable Media Replace + WP Media Folder)",
   "license": "MIT",
-  "type": "wordpress-muplugin",
+  "type": "wordpress-plugin",
   "authors": [
     {
       "name": "Itineris Limited",
