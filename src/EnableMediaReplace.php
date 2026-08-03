@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Itineris\StreamConnectorMediaReplace;
 
 use WP_Stream\Connector;
+use WP_Stream\Record;
 
 class EnableMediaReplace extends Connector {
     public $name = 'enable-media-replace';
@@ -30,6 +31,31 @@ class EnableMediaReplace extends Connector {
         return [
             'replaced' => __('Replaced', 'stream-connector-media-replace'),
         ];
+    }
+
+    /**
+     * @param array  $links
+     * @param Record $record
+     *
+     * @return array
+     */
+    public function action_links($links, $record)
+    {
+        if (! $record->object_id) {
+            return $links;
+        }
+
+        $editLink = get_edit_post_link((int) $record->object_id);
+        if ($editLink) {
+            $links[esc_html__('Edit Media', 'stream-connector-media-replace')] = esc_url($editLink);
+        }
+
+        $permalink = get_permalink((int) $record->object_id);
+        if ($permalink) {
+            $links[esc_html__('View', 'stream-connector-media-replace')] = esc_url($permalink);
+        }
+
+        return $links;
     }
 
     public function callback_enable_media_replace_upload_done(string $targetUrl, string $sourceUrl, int $postId): void
