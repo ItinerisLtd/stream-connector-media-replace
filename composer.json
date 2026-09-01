@@ -36,7 +36,7 @@
     "php": "^8.4"
   },
   "require-dev": {
-    "itinerisltd/itineris-wp-coding-standards": "^1.0",
+    "itinerisltd/itineris-wp-coding-standards": "^2.0",
     "roots/wordpress": "^7.0",
     "wpackagist-plugin/enable-media-replace": "^4.1",
     "xwp/stream": "^4.0"
