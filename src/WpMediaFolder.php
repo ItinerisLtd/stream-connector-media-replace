@@ -11,20 +11,15 @@ use function sprintf;
 class WpMediaFolder extends Connector
 {
     /**
-     * Connector slug
-     *
-     * @var string
+     * Set here, not redeclared: Stream 4.5 typed these properties, 4.4 did not.
      */
-    public $name = 'wp-media-folder';
-
-    /**
-     * Actions registered for this connector
-     *
-     * @var array
-     */
-    public $actions = [
-        'wpmf_after_replace',
-    ];
+    public function __construct()
+    {
+        $this->name = 'wp-media-folder';
+        $this->actions = [
+            'wpmf_after_replace',
+        ];
+    }
 
     public function get_label(): string
     {

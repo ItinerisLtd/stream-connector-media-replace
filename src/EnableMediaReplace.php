@@ -11,20 +11,15 @@ use function sprintf;
 class EnableMediaReplace extends Connector
 {
     /**
-     * Connector slug
-     *
-     * @var string
+     * Set here, not redeclared: Stream 4.5 typed these properties, 4.4 did not.
      */
-    public $name = 'enable-media-replace';
-
-    /**
-     * Actions registered for this connector
-     *
-     * @var array
-     */
-    public $actions = [
-        'enable-media-replace-upload-done',
-    ];
+    public function __construct()
+    {
+        $this->name = 'enable-media-replace';
+        $this->actions = [
+            'enable-media-replace-upload-done',
+        ];
+    }
 
     public function get_label(): string
     {
