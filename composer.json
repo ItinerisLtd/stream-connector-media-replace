@@ -38,7 +38,7 @@
   "require-dev": {
     "itinerisltd/itineris-wp-coding-standards": "^2.0",
     "roots/wordpress": "^7.0",
-    "wpackagist-plugin/enable-media-replace": "^4.1",
+    "wpackagist-plugin/enable-media-replace": "^5.0",
     "xwp/stream": "^4.0"
   },
   "prefer-stable": true,
